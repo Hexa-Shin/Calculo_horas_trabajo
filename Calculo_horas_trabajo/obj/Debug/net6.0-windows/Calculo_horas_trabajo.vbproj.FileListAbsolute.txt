@@ -1,0 +1,17 @@
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.vbproj.AssemblyReference.cache
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.wfmCalculosHT.resources
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.vbproj.GenerateResource.cache
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.AssemblyInfoInputs.cache
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.AssemblyInfo.vb
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.vbproj.CoreCompileInputs.cache
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\Calculo_horas_trabajo.exe
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\Calculo_horas_trabajo.deps.json
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\Calculo_horas_trabajo.runtimeconfig.json
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\Calculo_horas_trabajo.dll
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\Calculo_horas_trabajo.pdb
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.dll
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\refint\Calculo_horas_trabajo.dll
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.pdb
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.genruntimeconfig.cache
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\ref\Calculo_horas_trabajo.dll
