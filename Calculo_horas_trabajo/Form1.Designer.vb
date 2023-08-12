@@ -26,7 +26,7 @@ Partial Class wfmCalculosHT
         txtTmañana = New TextBox()
         TxtTtarde = New TextBox()
         txtTnoche = New TextBox()
-        TextBox4 = New TextBox()
+        txt1 = New TextBox()
         lblTmañana = New Label()
         lblTtarde = New Label()
         lblTnoche = New Label()
@@ -35,6 +35,10 @@ Partial Class wfmCalculosHT
         lblHferiado = New Label()
         lblDal100 = New Label()
         nudD100 = New NumericUpDown()
+        cldMes = New MonthCalendar()
+        txt2 = New TextBox()
+        btn1 = New Button()
+        txt3 = New TextBox()
         CType(nudD100, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -68,12 +72,12 @@ Partial Class wfmCalculosHT
         txtTnoche.Size = New Size(161, 23)
         txtTnoche.TabIndex = 1
         ' 
-        ' TextBox4
+        ' txt1
         ' 
-        TextBox4.Location = New Point(253, 382)
-        TextBox4.Name = "TextBox4"
-        TextBox4.Size = New Size(300, 23)
-        TextBox4.TabIndex = 1
+        txt1.Location = New Point(214, 428)
+        txt1.Name = "txt1"
+        txt1.Size = New Size(689, 23)
+        txt1.TabIndex = 1
         ' 
         ' lblTmañana
         ' 
@@ -105,7 +109,7 @@ Partial Class wfmCalculosHT
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(137, 385)
+        Label4.Location = New Point(167, 436)
         Label4.Name = "Label4"
         Label4.Size = New Size(41, 15)
         Label4.TabIndex = 2
@@ -144,11 +148,44 @@ Partial Class wfmCalculosHT
         nudD100.Size = New Size(120, 23)
         nudD100.TabIndex = 3
         ' 
+        ' cldMes
+        ' 
+        cldMes.Location = New Point(565, 214)
+        cldMes.MaxDate = New Date(2050, 12, 31, 0, 0, 0, 0)
+        cldMes.MinDate = New Date(2023, 1, 1, 0, 0, 0, 0)
+        cldMes.Name = "cldMes"
+        cldMes.TabIndex = 4
+        ' 
+        ' txt2
+        ' 
+        txt2.Location = New Point(214, 485)
+        txt2.Name = "txt2"
+        txt2.Size = New Size(689, 23)
+        txt2.TabIndex = 1
+        ' 
+        ' btn1
+        ' 
+        btn1.Location = New Point(115, 484)
+        btn1.Name = "btn1"
+        btn1.Size = New Size(75, 23)
+        btn1.TabIndex = 5
+        btn1.Text = "Button1"
+        btn1.UseVisualStyleBackColor = True
+        ' 
+        ' txt3
+        ' 
+        txt3.Location = New Point(214, 514)
+        txt3.Name = "txt3"
+        txt3.Size = New Size(689, 23)
+        txt3.TabIndex = 1
+        ' 
         ' wfmCalculosHT
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(915, 550)
+        Controls.Add(btn1)
+        Controls.Add(cldMes)
         Controls.Add(nudD100)
         Controls.Add(Label4)
         Controls.Add(lblTnoche)
@@ -156,14 +193,16 @@ Partial Class wfmCalculosHT
         Controls.Add(lblDal100)
         Controls.Add(lblHferiado)
         Controls.Add(lblTmañana)
-        Controls.Add(TextBox4)
+        Controls.Add(txt3)
+        Controls.Add(txt2)
+        Controls.Add(txt1)
         Controls.Add(txtTnoche)
         Controls.Add(TxtTtarde)
         Controls.Add(txtDferiado)
         Controls.Add(txtTmañana)
         Controls.Add(btncalculo)
         Name = "wfmCalculosHT"
-        Text = "Calculadora de Horas Trabajadas V1.0"
+        Text = "Calculadora de Horas Trabajadas V2.0"
         CType(nudD100, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
@@ -173,7 +212,7 @@ Partial Class wfmCalculosHT
     Friend WithEvents txtTmañana As TextBox
     Friend WithEvents TxtTtarde As TextBox
     Friend WithEvents txtTnoche As TextBox
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents txt1 As TextBox
     Friend WithEvents lblTmañana As Label
     Friend WithEvents lblTtarde As Label
     Friend WithEvents lblTnoche As Label
@@ -182,4 +221,8 @@ Partial Class wfmCalculosHT
     Friend WithEvents lblHferiado As Label
     Friend WithEvents lblDal100 As Label
     Friend WithEvents nudD100 As NumericUpDown
+    Friend WithEvents cldMes As MonthCalendar
+    Friend WithEvents txt2 As TextBox
+    Friend WithEvents btn1 As Button
+    Friend WithEvents txt3 As TextBox
 End Class
