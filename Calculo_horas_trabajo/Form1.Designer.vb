@@ -56,64 +56,73 @@ Partial Class wfmCalculosHT
         rdbMañana = New RadioButton()
         btnCargar = New Button()
         btnFinalizar = New Button()
-        NumericUpDown1 = New NumericUpDown()
+        nudFeriado = New NumericUpDown()
         Label6 = New Label()
         chbAl100 = New CheckBox()
         chbFeriado = New CheckBox()
         nudFranco = New NumericUpDown()
         Label7 = New Label()
         btnCargarFyE = New Button()
+        dgvTrabajados = New DataGridView()
+        clm_fecha = New DataGridViewTextBoxColumn()
+        clm_turno = New DataGridViewTextBoxColumn()
+        clm_feriado = New DataGridViewCheckBoxColumn()
+        clm_al100 = New DataGridViewCheckBoxColumn()
+        Button1 = New Button()
+        btnCargarDias = New Button()
+        Button3 = New Button()
         CType(nudD100, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudMañana, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudTarde, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudNoche, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudAl100, ComponentModel.ISupportInitialize).BeginInit()
         GroupBox1.SuspendLayout()
-        CType(NumericUpDown1, ComponentModel.ISupportInitialize).BeginInit()
+        CType(nudFeriado, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudFranco, ComponentModel.ISupportInitialize).BeginInit()
+        CType(dgvTrabajados, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' btncalculo
         ' 
-        btncalculo.Location = New Point(225, 231)
+        btncalculo.Location = New Point(12, 136)
         btncalculo.Name = "btncalculo"
-        btncalculo.Size = New Size(184, 53)
+        btncalculo.Size = New Size(84, 53)
         btncalculo.TabIndex = 0
         btncalculo.Text = "Calucular"
         btncalculo.UseVisualStyleBackColor = True
         ' 
         ' txtTmañana
         ' 
-        txtTmañana.Location = New Point(167, 74)
+        txtTmañana.Location = New Point(102, 36)
         txtTmañana.Name = "txtTmañana"
         txtTmañana.Size = New Size(161, 23)
         txtTmañana.TabIndex = 1
         ' 
         ' TxtTtarde
         ' 
-        TxtTtarde.Location = New Point(167, 125)
+        TxtTtarde.Location = New Point(102, 65)
         TxtTtarde.Name = "TxtTtarde"
         TxtTtarde.Size = New Size(161, 23)
         TxtTtarde.TabIndex = 1
         ' 
         ' txtTnoche
         ' 
-        txtTnoche.Location = New Point(167, 180)
+        txtTnoche.Location = New Point(102, 101)
         txtTnoche.Name = "txtTnoche"
         txtTnoche.Size = New Size(161, 23)
         txtTnoche.TabIndex = 1
         ' 
         ' txt1
         ' 
-        txt1.Location = New Point(214, 428)
+        txt1.Location = New Point(102, 187)
         txt1.Name = "txt1"
-        txt1.Size = New Size(689, 23)
+        txt1.Size = New Size(365, 23)
         txt1.TabIndex = 1
         ' 
         ' lblTmañana
         ' 
         lblTmañana.AutoSize = True
-        lblTmañana.Location = New Point(60, 77)
+        lblTmañana.Location = New Point(12, 39)
         lblTmañana.Name = "lblTmañana"
         lblTmañana.Size = New Size(84, 15)
         lblTmañana.TabIndex = 2
@@ -122,7 +131,7 @@ Partial Class wfmCalculosHT
         ' lblTtarde
         ' 
         lblTtarde.AutoSize = True
-        lblTtarde.Location = New Point(60, 133)
+        lblTtarde.Location = New Point(12, 74)
         lblTtarde.Name = "lblTtarde"
         lblTtarde.Size = New Size(69, 15)
         lblTtarde.TabIndex = 2
@@ -131,7 +140,7 @@ Partial Class wfmCalculosHT
         ' lblTnoche
         ' 
         lblTnoche.AutoSize = True
-        lblTnoche.Location = New Point(60, 188)
+        lblTnoche.Location = New Point(11, 109)
         lblTnoche.Name = "lblTnoche"
         lblTnoche.Size = New Size(76, 15)
         lblTnoche.TabIndex = 2
@@ -140,7 +149,7 @@ Partial Class wfmCalculosHT
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(167, 436)
+        Label4.Location = New Point(102, 220)
         Label4.Name = "Label4"
         Label4.Size = New Size(41, 15)
         Label4.TabIndex = 2
@@ -148,7 +157,7 @@ Partial Class wfmCalculosHT
         ' 
         ' txtDferiado
         ' 
-        txtDferiado.Location = New Point(433, 74)
+        txtDferiado.Location = New Point(347, 41)
         txtDferiado.Name = "txtDferiado"
         txtDferiado.Size = New Size(161, 23)
         txtDferiado.TabIndex = 1
@@ -156,7 +165,7 @@ Partial Class wfmCalculosHT
         ' lblHferiado
         ' 
         lblHferiado.AutoSize = True
-        lblHferiado.Location = New Point(347, 80)
+        lblHferiado.Location = New Point(269, 44)
         lblHferiado.Name = "lblHferiado"
         lblHferiado.Size = New Size(80, 15)
         lblHferiado.TabIndex = 2
@@ -165,7 +174,7 @@ Partial Class wfmCalculosHT
         ' lblDal100
         ' 
         lblDal100.AutoSize = True
-        lblDal100.Location = New Point(347, 128)
+        lblDal100.Location = New Point(269, 74)
         lblDal100.Name = "lblDal100"
         lblDal100.Size = New Size(62, 15)
         lblDal100.TabIndex = 2
@@ -173,7 +182,7 @@ Partial Class wfmCalculosHT
         ' 
         ' nudD100
         ' 
-        nudD100.Location = New Point(433, 125)
+        nudD100.Location = New Point(347, 72)
         nudD100.Maximum = New Decimal(New Integer() {5, 0, 0, 0})
         nudD100.Name = "nudD100"
         nudD100.Size = New Size(120, 23)
@@ -192,14 +201,14 @@ Partial Class wfmCalculosHT
         ' 
         ' txt2
         ' 
-        txt2.Location = New Point(214, 485)
+        txt2.Location = New Point(102, 245)
         txt2.Name = "txt2"
-        txt2.Size = New Size(689, 23)
+        txt2.Size = New Size(365, 23)
         txt2.TabIndex = 1
         ' 
         ' btn1
         ' 
-        btn1.Location = New Point(115, 484)
+        btn1.Location = New Point(6, 286)
         btn1.Name = "btn1"
         btn1.Size = New Size(75, 23)
         btn1.TabIndex = 5
@@ -208,15 +217,15 @@ Partial Class wfmCalculosHT
         ' 
         ' txt3
         ' 
-        txt3.Location = New Point(214, 514)
+        txt3.Location = New Point(102, 285)
         txt3.Name = "txt3"
-        txt3.Size = New Size(689, 23)
+        txt3.Size = New Size(365, 23)
         txt3.TabIndex = 1
         ' 
         ' btnPintar
         ' 
         btnPintar.Enabled = False
-        btnPintar.Location = New Point(12, 436)
+        btnPintar.Location = New Point(6, 246)
         btnPintar.Name = "btnPintar"
         btnPintar.Size = New Size(75, 23)
         btnPintar.TabIndex = 6
@@ -362,19 +371,19 @@ Partial Class wfmCalculosHT
         ' 
         ' btnFinalizar
         ' 
-        btnFinalizar.Location = New Point(732, 399)
+        btnFinalizar.Location = New Point(1113, 482)
         btnFinalizar.Name = "btnFinalizar"
         btnFinalizar.Size = New Size(75, 23)
         btnFinalizar.TabIndex = 11
         btnFinalizar.Text = "Finalizar"
         btnFinalizar.UseVisualStyleBackColor = True
         ' 
-        ' NumericUpDown1
+        ' nudFeriado
         ' 
-        NumericUpDown1.Location = New Point(1068, 246)
-        NumericUpDown1.Name = "NumericUpDown1"
-        NumericUpDown1.Size = New Size(120, 23)
-        NumericUpDown1.TabIndex = 7
+        nudFeriado.Location = New Point(1068, 246)
+        nudFeriado.Name = "nudFeriado"
+        nudFeriado.Size = New Size(120, 23)
+        nudFeriado.TabIndex = 7
         ' 
         ' Label6
         ' 
@@ -430,12 +439,81 @@ Partial Class wfmCalculosHT
         btnCargarFyE.Text = "Cargar"
         btnCargarFyE.UseVisualStyleBackColor = True
         ' 
+        ' dgvTrabajados
+        ' 
+        dgvTrabajados.AllowUserToAddRows = False
+        dgvTrabajados.AllowUserToDeleteRows = False
+        dgvTrabajados.AllowUserToResizeColumns = False
+        dgvTrabajados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        dgvTrabajados.Columns.AddRange(New DataGridViewColumn() {clm_fecha, clm_turno, clm_feriado, clm_al100})
+        dgvTrabajados.Location = New Point(672, 450)
+        dgvTrabajados.Name = "dgvTrabajados"
+        dgvTrabajados.RowTemplate.Height = 25
+        dgvTrabajados.Size = New Size(425, 317)
+        dgvTrabajados.TabIndex = 13
+        ' 
+        ' clm_fecha
+        ' 
+        clm_fecha.HeaderText = "FECHA"
+        clm_fecha.Name = "clm_fecha"
+        clm_fecha.ReadOnly = True
+        clm_fecha.Width = 150
+        ' 
+        ' clm_turno
+        ' 
+        clm_turno.HeaderText = "TURNO"
+        clm_turno.Name = "clm_turno"
+        clm_turno.ReadOnly = True
+        ' 
+        ' clm_feriado
+        ' 
+        clm_feriado.HeaderText = "FERIADO"
+        clm_feriado.Name = "clm_feriado"
+        clm_feriado.Width = 65
+        ' 
+        ' clm_al100
+        ' 
+        clm_al100.HeaderText = "Dias Al 100"
+        clm_al100.Name = "clm_al100"
+        clm_al100.Width = 65
+        ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(184, 516)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(127, 23)
+        Button1.TabIndex = 14
+        Button1.Text = "CARGAR FERIADO"
+        Button1.UseVisualStyleBackColor = True
+        ' 
+        ' btnCargarDias
+        ' 
+        btnCargarDias.Location = New Point(526, 482)
+        btnCargarDias.Name = "btnCargarDias"
+        btnCargarDias.Size = New Size(127, 23)
+        btnCargarDias.TabIndex = 15
+        btnCargarDias.Text = "CARGAR DIAS"
+        btnCargarDias.UseVisualStyleBackColor = True
+        ' 
+        ' Button3
+        ' 
+        Button3.Location = New Point(184, 545)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(127, 23)
+        Button3.TabIndex = 14
+        Button3.Text = "CARGAR DIA AL 100"
+        Button3.UseVisualStyleBackColor = True
+        ' 
         ' wfmCalculosHT
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Control
-        ClientSize = New Size(1299, 550)
+        ClientSize = New Size(1299, 779)
+        Controls.Add(btnCargarDias)
+        Controls.Add(Button3)
+        Controls.Add(Button1)
+        Controls.Add(dgvTrabajados)
         Controls.Add(chbFeriado)
         Controls.Add(chbAl100)
         Controls.Add(btnFinalizar)
@@ -452,7 +530,7 @@ Partial Class wfmCalculosHT
         Controls.Add(nudAl100)
         Controls.Add(nudFranco)
         Controls.Add(nudNoche)
-        Controls.Add(NumericUpDown1)
+        Controls.Add(nudFeriado)
         Controls.Add(nudTarde)
         Controls.Add(nudMañana)
         Controls.Add(btnPintar)
@@ -474,7 +552,7 @@ Partial Class wfmCalculosHT
         Controls.Add(txtTmañana)
         Controls.Add(btncalculo)
         Name = "wfmCalculosHT"
-        Text = "Calculadora de Horas Trabajadas V2.0"
+        Text = "Calculadora de Horas Trabajadas V3.0"
         CType(nudD100, ComponentModel.ISupportInitialize).EndInit()
         CType(nudMañana, ComponentModel.ISupportInitialize).EndInit()
         CType(nudTarde, ComponentModel.ISupportInitialize).EndInit()
@@ -482,8 +560,9 @@ Partial Class wfmCalculosHT
         CType(nudAl100, ComponentModel.ISupportInitialize).EndInit()
         GroupBox1.ResumeLayout(False)
         GroupBox1.PerformLayout()
-        CType(NumericUpDown1, ComponentModel.ISupportInitialize).EndInit()
+        CType(nudFeriado, ComponentModel.ISupportInitialize).EndInit()
         CType(nudFranco, ComponentModel.ISupportInitialize).EndInit()
+        CType(dgvTrabajados, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -522,11 +601,19 @@ Partial Class wfmCalculosHT
     Friend WithEvents rdbMañana As RadioButton
     Friend WithEvents btnCargar As Button
     Friend WithEvents btnFinalizar As Button
-    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents nudFeriado As NumericUpDown
     Friend WithEvents Label6 As Label
     Friend WithEvents chbAl100 As CheckBox
     Friend WithEvents chbFeriado As CheckBox
     Friend WithEvents nudFranco As NumericUpDown
     Friend WithEvents Label7 As Label
     Friend WithEvents btnCargarFyE As Button
+    Friend WithEvents dgvTrabajados As DataGridView
+    Friend WithEvents Button1 As Button
+    Friend WithEvents btnCargarDias As Button
+    Friend WithEvents Button3 As Button
+    Friend WithEvents clm_fecha As DataGridViewTextBoxColumn
+    Friend WithEvents clm_turno As DataGridViewTextBoxColumn
+    Friend WithEvents clm_feriado As DataGridViewCheckBoxColumn
+    Friend WithEvents clm_al100 As DataGridViewCheckBoxColumn
 End Class
