@@ -22,6 +22,7 @@ Partial Class wfmCalculosHT
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         cldMes = New MonthCalendar()
         nudMañana = New NumericUpDown()
         nudTarde = New NumericUpDown()
@@ -47,6 +48,9 @@ Partial Class wfmCalculosHT
         clm_turno = New DataGridViewTextBoxColumn()
         clm_feriado = New DataGridViewCheckBoxColumn()
         clm_al100 = New DataGridViewCheckBoxColumn()
+        btnLimpiar = New Button()
+        btnBorrar = New Button()
+        ContextMenuStrip1 = New ContextMenuStrip(components)
         CType(nudMañana, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudTarde, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudNoche, ComponentModel.ISupportInitialize).BeginInit()
@@ -70,28 +74,36 @@ Partial Class wfmCalculosHT
         ' 
         ' nudMañana
         ' 
+        nudMañana.Enabled = False
         nudMañana.Location = New Point(463, 269)
+        nudMañana.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
         nudMañana.Name = "nudMañana"
         nudMañana.Size = New Size(120, 23)
         nudMañana.TabIndex = 7
         ' 
         ' nudTarde
         ' 
+        nudTarde.Enabled = False
         nudTarde.Location = New Point(463, 309)
+        nudTarde.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
         nudTarde.Name = "nudTarde"
         nudTarde.Size = New Size(120, 23)
         nudTarde.TabIndex = 7
         ' 
         ' nudNoche
         ' 
+        nudNoche.Enabled = False
         nudNoche.Location = New Point(463, 350)
+        nudNoche.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
         nudNoche.Name = "nudNoche"
         nudNoche.Size = New Size(120, 23)
         nudNoche.TabIndex = 7
         ' 
         ' nudAl100
         ' 
+        nudAl100.Enabled = False
         nudAl100.Location = New Point(602, 309)
+        nudAl100.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
         nudAl100.Name = "nudAl100"
         nudAl100.Size = New Size(120, 23)
         nudAl100.TabIndex = 7
@@ -149,7 +161,7 @@ Partial Class wfmCalculosHT
         ' 
         btnCargarDias.Location = New Point(6, 133)
         btnCargarDias.Name = "btnCargarDias"
-        btnCargarDias.Size = New Size(127, 23)
+        btnCargarDias.Size = New Size(120, 23)
         btnCargarDias.TabIndex = 15
         btnCargarDias.Text = "CARGAR DIAS"
         btnCargarDias.UseVisualStyleBackColor = True
@@ -209,7 +221,9 @@ Partial Class wfmCalculosHT
         ' 
         ' nudFeriado
         ' 
+        nudFeriado.Enabled = False
         nudFeriado.Location = New Point(602, 269)
+        nudFeriado.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
         nudFeriado.Name = "nudFeriado"
         nudFeriado.Size = New Size(120, 23)
         nudFeriado.TabIndex = 7
@@ -225,7 +239,9 @@ Partial Class wfmCalculosHT
         ' 
         ' nudFranco
         ' 
+        nudFranco.Enabled = False
         nudFranco.Location = New Point(602, 350)
+        nudFranco.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
         nudFranco.Name = "nudFranco"
         nudFranco.Size = New Size(120, 23)
         nudFranco.TabIndex = 7
@@ -277,12 +293,37 @@ Partial Class wfmCalculosHT
         clm_al100.Name = "clm_al100"
         clm_al100.Width = 65
         ' 
+        ' btnLimpiar
+        ' 
+        btnLimpiar.Location = New Point(463, 497)
+        btnLimpiar.Name = "btnLimpiar"
+        btnLimpiar.Size = New Size(120, 23)
+        btnLimpiar.TabIndex = 14
+        btnLimpiar.Text = "LIMPIAR"
+        btnLimpiar.UseVisualStyleBackColor = True
+        ' 
+        ' btnBorrar
+        ' 
+        btnBorrar.Location = New Point(463, 409)
+        btnBorrar.Name = "btnBorrar"
+        btnBorrar.Size = New Size(120, 23)
+        btnBorrar.TabIndex = 15
+        btnBorrar.Text = "Borrar Elemento"
+        btnBorrar.UseVisualStyleBackColor = True
+        ' 
+        ' ContextMenuStrip1
+        ' 
+        ContextMenuStrip1.Name = "ContextMenuStrip1"
+        ContextMenuStrip1.Size = New Size(61, 4)
+        ' 
         ' wfmCalculosHT
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Control
         ClientSize = New Size(740, 538)
+        Controls.Add(btnBorrar)
+        Controls.Add(btnLimpiar)
         Controls.Add(dgvTrabajados)
         Controls.Add(btnFinalizar)
         Controls.Add(GroupBox1)
@@ -338,4 +379,7 @@ Partial Class wfmCalculosHT
     Friend WithEvents clm_turno As DataGridViewTextBoxColumn
     Friend WithEvents clm_feriado As DataGridViewCheckBoxColumn
     Friend WithEvents clm_al100 As DataGridViewCheckBoxColumn
+    Friend WithEvents btnLimpiar As Button
+    Friend WithEvents btnBorrar As Button
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
 End Class

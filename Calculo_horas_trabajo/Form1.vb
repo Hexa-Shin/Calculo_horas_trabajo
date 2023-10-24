@@ -2,120 +2,131 @@
     Private Sub btnCargarDias_Click(sender As Object, e As EventArgs) Handles btnCargarDias.Click
         Dim fecha As String = "dd,MM,yyyy"
         Dim fechaExistente As Boolean = False
+        Dim difdias, cantelementos As Integer
+
+        cantelementos = dgvTrabajados.RowCount
+        difdias = DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
+
+        If (difdias + 1 + cantelementos) <= 31 Then
 
 
-        Select Case True
-            Case rdbMañana.Checked
-                For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
+            Select Case True
+                Case rdbMañana.Checked
+                    For i As Integer = 0 To difdias
 
+                        fecha = cldMes.SelectionStart.AddDays(i)
 
-
-                    fecha = cldMes.SelectionStart.AddDays(i)
-
-                    ' Verifica si la fecha ya existe en el DataGridView
-                    For Each fila As DataGridViewRow In dgvTrabajados.Rows
-                        If Not fila.IsNewRow Then
-                            Dim fechaCelda As Date
-                            If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
-                                If fechaCelda = fecha Then
-                                    fechaExistente = True
-                                    Exit For ' La fecha ya existe, no es necesario seguir buscando
+                        ' Verifica si la fecha ya existe en el DataGridView
+                        For Each fila As DataGridViewRow In dgvTrabajados.Rows
+                            If Not fila.IsNewRow Then
+                                Dim fechaCelda As Date
+                                If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
+                                    If fechaCelda = fecha Then
+                                        fechaExistente = True
+                                        Exit For ' La fecha ya existe, no es necesario seguir buscando
+                                    End If
                                 End If
                             End If
+                        Next
+
+                        ' Si la fecha no existe, agrégala al DataGridView
+                        If Not fechaExistente Then
+                            dgvTrabajados.Rows.Add(fecha, "Mañana")
+                        Else
+                            MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            Exit For
                         End If
                     Next
 
-                    ' Si la fecha no existe, agrégala al DataGridView
-                    If Not fechaExistente Then
-                        dgvTrabajados.Rows.Add(fecha, "Mañana")
-                    Else
-                        MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                        Exit For
-                    End If
-                Next
+                Case rdbTarde.Checked
+                    For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
+                        fecha = cldMes.SelectionStart.AddDays(i)
 
-            Case rdbTarde.Checked
-                For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
-                    fecha = cldMes.SelectionStart.AddDays(i)
-
-                    ' Verifica si la fecha ya existe en el DataGridView
-                    For Each fila As DataGridViewRow In dgvTrabajados.Rows
-                        If Not fila.IsNewRow Then
-                            Dim fechaCelda As Date
-                            If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
-                                If fechaCelda = fecha Then
-                                    fechaExistente = True
-                                    Exit For ' La fecha ya existe, no es necesario seguir buscando
+                        ' Verifica si la fecha ya existe en el DataGridView
+                        For Each fila As DataGridViewRow In dgvTrabajados.Rows
+                            If Not fila.IsNewRow Then
+                                Dim fechaCelda As Date
+                                If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
+                                    If fechaCelda = fecha Then
+                                        fechaExistente = True
+                                        Exit For ' La fecha ya existe, no es necesario seguir buscando
+                                    End If
                                 End If
                             End If
+                        Next
+
+                        ' Si la fecha no existe, agrégala al DataGridView
+                        If Not fechaExistente Then
+                            dgvTrabajados.Rows.Add(fecha, "Tarde")
+                        Else
+                            MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            Exit For
                         End If
                     Next
 
-                    ' Si la fecha no existe, agrégala al DataGridView
-                    If Not fechaExistente Then
-                        dgvTrabajados.Rows.Add(fecha, "Tarde")
-                    Else
-                        MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                        Exit For
-                    End If
-                Next
+                Case rdbNoche.Checked
+                    For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
+                        fecha = cldMes.SelectionStart.AddDays(i)
 
-            Case rdbNoche.Checked
-                For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
-                    fecha = cldMes.SelectionStart.AddDays(i)
-
-                    ' Verifica si la fecha ya existe en el DataGridView
-                    For Each fila As DataGridViewRow In dgvTrabajados.Rows
-                        If Not fila.IsNewRow Then
-                            Dim fechaCelda As Date
-                            If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
-                                If fechaCelda = fecha Then
-                                    fechaExistente = True
-                                    Exit For ' La fecha ya existe, no es necesario seguir buscando
+                        ' Verifica si la fecha ya existe en el DataGridView
+                        For Each fila As DataGridViewRow In dgvTrabajados.Rows
+                            If Not fila.IsNewRow Then
+                                Dim fechaCelda As Date
+                                If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
+                                    If fechaCelda = fecha Then
+                                        fechaExistente = True
+                                        Exit For ' La fecha ya existe, no es necesario seguir buscando
+                                    End If
                                 End If
                             End If
+                        Next
+
+                        ' Si la fecha no existe, agrégala al DataGridView
+                        If Not fechaExistente Then
+                            dgvTrabajados.Rows.Add(fecha, "Noche")
+                        Else
+                            MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            Exit For
                         End If
                     Next
 
-                    ' Si la fecha no existe, agrégala al DataGridView
-                    If Not fechaExistente Then
-                        dgvTrabajados.Rows.Add(fecha, "Noche")
-                    Else
-                        MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                        Exit For
-                    End If
-                Next
+                Case rdbFranco.Checked
+                    For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
+                        fecha = cldMes.SelectionStart.AddDays(i)
 
-            Case rdbFranco.Checked
-                For i As Integer = 0 To DateDiff(DateInterval.Day, cldMes.SelectionStart, cldMes.SelectionEnd)
-                    fecha = cldMes.SelectionStart.AddDays(i)
+                        ' Verifica si la fecha ya existe en el DataGridView
 
-                    ' Verifica si la fecha ya existe en el DataGridView
-
-                    For Each fila As DataGridViewRow In dgvTrabajados.Rows
-                        If Not fila.IsNewRow Then
-                            Dim fechaCelda As Date
-                            If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
-                                If fechaCelda = fecha Then
-                                    fechaExistente = True
-                                    Exit For ' La fecha ya existe, no es necesario seguir buscando
+                        For Each fila As DataGridViewRow In dgvTrabajados.Rows
+                            If Not fila.IsNewRow Then
+                                Dim fechaCelda As Date
+                                If Date.TryParse(fila.Cells("clm_fecha").Value.ToString(), fechaCelda) Then
+                                    If fechaCelda = fecha Then
+                                        fechaExistente = True
+                                        Exit For ' La fecha ya existe, no es necesario seguir buscando
+                                    End If
                                 End If
                             End If
+                        Next
+
+                        ' Si la fecha no existe, agrégala al DataGridView
+                        If Not fechaExistente Then
+                            dgvTrabajados.Rows.Add(fecha, "Franco")
+                        Else
+                            MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+                            Exit For
                         End If
                     Next
 
-                    ' Si la fecha no existe, agrégala al DataGridView
-                    If Not fechaExistente Then
-                        dgvTrabajados.Rows.Add(fecha, "Franco")
-                    Else
-                        MessageBox.Show("La fecha ya existe en el DataGridView.", "Fecha Duplicada", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
-                        Exit For
-                    End If
-                Next
+                Case Else
+                    MsgBox("Seleccione un turno")
+            End Select
 
-            Case Else
-                MsgBox("Seleccione un turno")
-        End Select
+            dgvTrabajados.Sort(dgvTrabajados.Columns("clm_fecha"), System.ComponentModel.ListSortDirection.Ascending)
+
+        Else
+            MsgBox("El DataGrid puede tener hasta 31 elementos, asegurese de haber seleccionado los dias correctamente")
+        End If
+
 
     End Sub
 
@@ -224,5 +235,34 @@
 
     End Sub
 
+    Private Sub btnLimpiar_Click(sender As Object, e As EventArgs) Handles btnLimpiar.Click
 
+        rdbMañana.Checked = False
+        rdbTarde.Checked = False
+        rdbNoche.Checked = False
+        rdbFranco.Checked = False
+
+        nudMañana.Value = 0
+        nudTarde.Value = 0
+        nudNoche.Value = 0
+        nudFeriado.Value = 0
+        nudAl100.Value = 0
+        nudFranco.Value = 0
+
+        dgvTrabajados.Rows.Clear()
+
+        cldMes.SelectionStart = DateTime.Now
+
+    End Sub
+
+    Private Sub btnBorrar_Click(sender As Object, e As EventArgs) Handles btnBorrar.Click
+        If dgvTrabajados.SelectedRows.Count > 0 Then
+            ' Elimina las filas seleccionadas del DataGridView
+            For Each fila As DataGridViewRow In dgvTrabajados.SelectedRows
+                dgvTrabajados.Rows.Remove(fila)
+            Next
+        Else
+            MessageBox.Show("No hay filas seleccionadas para eliminar.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+    End Sub
 End Class
