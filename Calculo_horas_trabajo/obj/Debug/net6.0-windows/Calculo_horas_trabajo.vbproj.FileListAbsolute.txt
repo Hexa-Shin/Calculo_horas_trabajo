@@ -31,3 +31,8 @@ C:\Users\djaal\source\repos\Calculo_horas_trabajo v2.0\Calculo_horas_trabajo\obj
 C:\Users\djaal\source\repos\Calculo_horas_trabajo v2.0\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.pdb
 C:\Users\djaal\source\repos\Calculo_horas_trabajo v2.0\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.genruntimeconfig.cache
 C:\Users\djaal\source\repos\Calculo_horas_trabajo v2.0\Calculo_horas_trabajo\obj\Debug\net6.0-windows\ref\Calculo_horas_trabajo.dll
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\BouncyCastle.Crypto.dll
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\itextsharp.dll
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.vbproj.AssemblyReference.cache
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\obj\Debug\net6.0-windows\Calculo_horas_trabajo.vbproj.CopyComplete
+C:\Users\djaal\source\repos\Calculo_horas_trabajo\Calculo_horas_trabajo\bin\Debug\net6.0-windows\itextsharp.xmlworker.dll

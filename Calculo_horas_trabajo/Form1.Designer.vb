@@ -51,6 +51,8 @@ Partial Class wfmCalculosHT
         btnLimpiar = New Button()
         btnBorrar = New Button()
         ContextMenuStrip1 = New ContextMenuStrip(components)
+        BindingSource1 = New BindingSource(components)
+        Button1 = New Button()
         CType(nudMañana, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudTarde, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudNoche, ComponentModel.ISupportInitialize).BeginInit()
@@ -59,6 +61,7 @@ Partial Class wfmCalculosHT
         CType(nudFeriado, ComponentModel.ISupportInitialize).BeginInit()
         CType(nudFranco, ComponentModel.ISupportInitialize).BeginInit()
         CType(dgvTrabajados, ComponentModel.ISupportInitialize).BeginInit()
+        CType(BindingSource1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' cldMes
@@ -316,12 +319,22 @@ Partial Class wfmCalculosHT
         ContextMenuStrip1.Name = "ContextMenuStrip1"
         ContextMenuStrip1.Size = New Size(61, 4)
         ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(629, 462)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(75, 23)
+        Button1.TabIndex = 16
+        Button1.Text = "Button1"
+        Button1.UseVisualStyleBackColor = True
+        ' 
         ' wfmCalculosHT
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = SystemColors.Control
         ClientSize = New Size(740, 538)
+        Controls.Add(Button1)
         Controls.Add(btnBorrar)
         Controls.Add(btnLimpiar)
         Controls.Add(dgvTrabajados)
@@ -351,6 +364,7 @@ Partial Class wfmCalculosHT
         CType(nudFeriado, ComponentModel.ISupportInitialize).EndInit()
         CType(nudFranco, ComponentModel.ISupportInitialize).EndInit()
         CType(dgvTrabajados, ComponentModel.ISupportInitialize).EndInit()
+        CType(BindingSource1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -382,4 +396,6 @@ Partial Class wfmCalculosHT
     Friend WithEvents btnLimpiar As Button
     Friend WithEvents btnBorrar As Button
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents BindingSource1 As BindingSource
+    Friend WithEvents Button1 As Button
 End Class

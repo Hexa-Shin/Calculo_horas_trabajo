@@ -1,4 +1,15 @@
-﻿Public Class wfmCalculosHT
+﻿Imports iTextSharp.text
+Imports iTextSharp.text.Document
+Imports iTextSharp.text.pdf
+Imports System.IO
+
+Module variables_globales
+    Public t_comienzo, t_dias_trabajados, t_horas_nocturnas, t_adicionales_100, t_adicionales_feriado As String
+
+End Module
+
+
+Public Class wfmCalculosHT
     Private Sub btnCargarDias_Click(sender As Object, e As EventArgs) Handles btnCargarDias.Click
         Dim fecha As String = "dd,MM,yyyy"
         Dim fechaExistente As Boolean = False
@@ -162,8 +173,6 @@
             feriado = dgvTrabajados.Rows(i).Cells(2).Value
             al100 = dgvTrabajados.Rows(i).Cells(3).Value
 
-            ' Puedes usar las variables según tus necesidades
-
             Select Case turno
                 Case "Mañana"
                     nudMañana.Value = nudMañana.Value + 1
@@ -227,11 +236,16 @@
 
         Hal100 = Dal100 * 8
 
-        MsgBox("el recibo de sueldo debe decir: " & vbCrLf & vbCrLf &
-               "Dias Trabajado: 30" & vbCrLf &
-               "Horas Nocturnas: " & Hnocturnas & vbCrLf &
-               "Adicional Horas al 100: " & Hal100 & vbCrLf &
-               "Adicional Horas Feriado: " & Hferiado)
+        t_comienzo = "el recibo de sueldo debe decir: "
+        t_dias_trabajados = "Dias Trabajado: 30"
+        t_horas_nocturnas = "Horas Nocturnas: " & Hnocturnas
+        t_adicionales_100 = "Adicional Horas al 100: " & Hal100
+        t_adicionales_feriado = "Adicional Horas Feriado: " & Hferiado
+
+        'MsgBox(Info_de_trabajo)
+        crear_pdf()
+
+
 
     End Sub
 
@@ -265,4 +279,143 @@
             MessageBox.Show("No hay filas seleccionadas para eliminar.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
     End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        'vamos a encontrar la ruta donde guardar el PDF
+        'Muestro el SaveFileDialog y guardo el contenido del PDF
+        Dim SaveFileDialog As New SaveFileDialog
+        Dim ruta As String
+        With SaveFileDialog
+            .Title = "Guardar"
+            'Selecciono la ruta de generacion por defecto
+            'En todo los demás casos uso la ruta por defecto
+            .InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+            .Filter = "Arcivos pdf (*.pdf)|*.pdf"
+            .FileName = "Calculo_Horarios"
+            .OverwritePrompt = True
+            .CheckPathExists = True
+        End With
+
+        If SaveFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            ruta = SaveFileDialog.FileName
+        Else
+            ruta = String.Empty
+            Exit Sub
+        End If
+
+        'Vamos a generar el PDF
+        Try
+            'Creamos un documento
+            Dim document As New iTextSharp.text.Document()
+
+            'ahora configuramos la hoja
+            document.PageSize.Rotate()
+
+            'ahora algunas propiedades
+            document.AddAuthor("Shin")
+            document.AddTitle("crear pdf")
+
+            Dim writer As PdfWriter = PdfWriter.GetInstance(document, New System.IO.FileStream(ruta, System.IO.FileMode.Create))
+            'con esto conseguiremos que el documento sea presentado como pagina simple
+            writer.ViewerPreferences = PdfWriter.PageLayoutSinglePage
+            'abrimos el documento para empezar a escribir
+            document.Open()
+
+            'empezamos definiendo el tipo de letra y vamos a añadir contenido
+
+            Dim cb As PdfContentByte = writer.DirectContent
+            Dim bf As BaseFont = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED)
+            cb.SetFontAndSize(bf, 12)
+            cb.BeginText()
+
+            'datos
+            cb.SetTextMatrix(50, 790)
+            cb.ShowText("Datos: " & "hola mundo")
+
+            cb.EndText()
+            'y lo cerramos
+            document.Close()
+
+            MsgBox("PDF generado")
+        Catch ex As Exception
+            MessageBox.Show("Error en la generacion del PDF", "Error", MessageBoxButtons.OK)
+        End Try
+
+
+    End Sub
+
+    Sub crear_pdf()
+
+        'vamos a encontrar la ruta donde guardar el PDF
+        'Muestro el SaveFileDialog y guardo el contenido del PDF
+        Dim SaveFileDialog As New SaveFileDialog
+        Dim ruta As String
+        With SaveFileDialog
+            .Title = "Guardar"
+            'Selecciono la ruta de generacion por defecto
+            'En todo los demás casos uso la ruta por defecto
+            .InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+            .Filter = "Arcivos pdf (*.pdf)|*.pdf"
+            .FileName = "Calculo_Horarios"
+            .OverwritePrompt = True
+            .CheckPathExists = True
+        End With
+
+        If SaveFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            ruta = SaveFileDialog.FileName
+        Else
+            ruta = String.Empty
+            Exit Sub
+        End If
+
+        'Vamos a generar el PDF
+        Try
+            'Creamos un documento
+            Dim document As New iTextSharp.text.Document()
+
+            'ahora configuramos la hoja
+            document.PageSize.Rotate()
+
+            'ahora algunas propiedades
+            document.AddAuthor("Shin")
+            document.AddTitle("crear pdf")
+
+            'Dim writer As PdfWriter = PdfWriter.GetInstance(document, New System.IO.FileStream(ruta, System.IO.FileMode.Create))
+            Using writer As PdfWriter = PdfWriter.GetInstance(document, New FileStream(ruta, FileMode.Create))
+
+                'abrimos el documento para empezar a escribir
+                document.Open()
+
+                agregar_contenido(document)
+
+                'y lo cerramos
+                document.Close()
+
+                MsgBox("PDF generado")
+
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error en la generacion del PDF", "Error", MessageBoxButtons.OK)
+        End Try
+
+    End Sub
+
+    Sub agregar_contenido(document As iTextSharp.text.Document)
+
+        'crear contenido
+        Dim contenido As String = t_comienzo & vbCrLf & vbCrLf &
+                                  t_dias_trabajados & vbCrLf &
+                                  t_horas_nocturnas & vbCrLf &
+                                  t_adicionales_100 & vbCrLf &
+                                  t_adicionales_feriado
+
+        'configurar el tipo de fuente y tamaño
+        Dim font As Font = New Font(Font.FontFamily.HELVETICA, 12)
+
+        'crear parrafo
+        Dim parrafo As New Paragraph(contenido, font)
+        document.Add(parrafo)
+
+    End Sub
+
 End Class
