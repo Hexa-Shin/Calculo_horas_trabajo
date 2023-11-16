@@ -1,7 +1,12 @@
 ﻿Imports iTextSharp.text
-Imports iTextSharp.text.Document
 Imports iTextSharp.text.pdf
 Imports System.IO
+Imports iText.Kernel.Pdf
+Imports iText.Layout
+Imports iText.Layout.Element
+Imports iText.Layout.Properties
+Imports iTextSharp.tool.xml.html.table
+
 
 Module variables_globales
     Public t_comienzo, t_dias_trabajados, t_horas_nocturnas, t_adicionales_100, t_adicionales_feriado As String
@@ -281,65 +286,7 @@ Public Class wfmCalculosHT
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'vamos a encontrar la ruta donde guardar el PDF
-        'Muestro el SaveFileDialog y guardo el contenido del PDF
-        Dim SaveFileDialog As New SaveFileDialog
-        Dim ruta As String
-        With SaveFileDialog
-            .Title = "Guardar"
-            'Selecciono la ruta de generacion por defecto
-            'En todo los demás casos uso la ruta por defecto
-            .InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
-            .Filter = "Arcivos pdf (*.pdf)|*.pdf"
-            .FileName = "Calculo_Horarios"
-            .OverwritePrompt = True
-            .CheckPathExists = True
-        End With
-
-        If SaveFileDialog.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            ruta = SaveFileDialog.FileName
-        Else
-            ruta = String.Empty
-            Exit Sub
-        End If
-
-        'Vamos a generar el PDF
-        Try
-            'Creamos un documento
-            Dim document As New iTextSharp.text.Document()
-
-            'ahora configuramos la hoja
-            document.PageSize.Rotate()
-
-            'ahora algunas propiedades
-            document.AddAuthor("Shin")
-            document.AddTitle("crear pdf")
-
-            Dim writer As PdfWriter = PdfWriter.GetInstance(document, New System.IO.FileStream(ruta, System.IO.FileMode.Create))
-            'con esto conseguiremos que el documento sea presentado como pagina simple
-            writer.ViewerPreferences = PdfWriter.PageLayoutSinglePage
-            'abrimos el documento para empezar a escribir
-            document.Open()
-
-            'empezamos definiendo el tipo de letra y vamos a añadir contenido
-
-            Dim cb As PdfContentByte = writer.DirectContent
-            Dim bf As BaseFont = BaseFont.CreateFont(BaseFont.COURIER_BOLD, BaseFont.CP1252, BaseFont.NOT_EMBEDDED)
-            cb.SetFontAndSize(bf, 12)
-            cb.BeginText()
-
-            'datos
-            cb.SetTextMatrix(50, 790)
-            cb.ShowText("Datos: " & "hola mundo")
-
-            cb.EndText()
-            'y lo cerramos
-            document.Close()
-
-            MsgBox("PDF generado")
-        Catch ex As Exception
-            MessageBox.Show("Error en la generacion del PDF", "Error", MessageBoxButtons.OK)
-        End Try
+        crear_pdf()
 
 
     End Sub
@@ -381,7 +328,7 @@ Public Class wfmCalculosHT
             document.AddTitle("crear pdf")
 
             'Dim writer As PdfWriter = PdfWriter.GetInstance(document, New System.IO.FileStream(ruta, System.IO.FileMode.Create))
-            Using writer As PdfWriter = PdfWriter.GetInstance(document, New FileStream(ruta, FileMode.Create))
+            Using writer As pdf.PdfWriter = iText.Kernel.Pdf.PdfWriter.GetInstance(document, New FileStream(ruta, FileMode.Create))
 
                 'abrimos el documento para empezar a escribir
                 document.Open()
@@ -409,11 +356,30 @@ Public Class wfmCalculosHT
                                   t_adicionales_100 & vbCrLf &
                                   t_adicionales_feriado
 
+
+        Dim tabla As iText.Layout.Element.Table = New iText.Layout.Element.Table(UnitValue.CreatePercentArray(3)).UseAllAvailableWidth()
+
+        ' Añadir celdas a la tabla
+        tabla.AddHeaderCell(New Cell().Add(New iText.Layout.Element.Paragraph("Encabezado 1")))
+        tabla.AddHeaderCell(New Cell().Add(New iText.Layout.Element.Paragraph("Encabezado 2")))
+        tabla.AddHeaderCell(New Cell().Add(New iText.Layout.Element.Paragraph("Encabezado 3")))
+
+        tabla.AddCell(New Cell().Add(New iText.Layout.Element.Paragraph("Celda 1")))
+        tabla.AddCell(New Cell().Add(New iText.Layout.Element.Paragraph("Celda 2")))
+        tabla.AddCell(New Cell().Add(New iText.Layout.Element.Paragraph("Celda 3")))
+
+        tabla.AddCell(New Cell().Add(New iText.Layout.Element.Paragraph("Celda 4")))
+        tabla.AddCell(New Cell().Add(New iText.Layout.Element.Paragraph("Celda 5")))
+        tabla.AddCell(New Cell().Add(New iText.Layout.Element.Paragraph("Celda 6")))
+
+        ' Añadir tabla al documento
+        PdfDocument.Add(tabla)
+
         'configurar el tipo de fuente y tamaño
         Dim font As Font = New Font(Font.FontFamily.HELVETICA, 12)
 
         'crear parrafo
-        Dim parrafo As New Paragraph(contenido, font)
+        Dim parrafo As New iTextSharp.text.Paragraph(contenido, font)
         document.Add(parrafo)
 
     End Sub

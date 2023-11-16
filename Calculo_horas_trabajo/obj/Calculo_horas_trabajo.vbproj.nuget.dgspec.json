@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[5.5.13.3, )"
             },
+            "itext7": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
             "itextsharp.xmlworker": {
               "target": "Package",
               "version": "[5.5.13.3, )"
